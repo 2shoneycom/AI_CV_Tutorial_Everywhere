@@ -1,0 +1,12 @@
+{
+  "name": "ai-cv-tutorial-everywhere",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node --env-file=.env.local src/server.js",
+    "test": "node --test",
+    "check": "node --check src/server.js && node --check src/guide.js && node --check public/app.js && node --check public/camera.js"
+  }
+}

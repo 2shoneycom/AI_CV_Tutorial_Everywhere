@@ -1,0 +1,7 @@
+const content=document.getElementById('content'),heading=document.getElementById('heading');
+let selected,temperature,menus=[['아메리카노','3,000원'],['카페 라테','4,000원'],['바닐라 라테','4,500원'],['초콜릿','4,000원']];
+function button(label,click,cls=''){const b=document.createElement('button');b.textContent=label;b.className=cls;b.onclick=click;return b;}
+function home(){heading.textContent='어떤 음료를 드릴까요?';content.replaceChildren();const grid=document.createElement('div');grid.className='menu-grid';menus.forEach(([name,price])=>{const b=button(name,()=>{selected=name;options();},'menu-item');const span=document.createElement('span');span.textContent=price;b.append(span);grid.append(b);});content.append(grid);}
+function options(){heading.textContent=`${selected} · 온도를 골라 주세요`;content.replaceChildren();const grid=document.createElement('div');grid.className='menu-grid';for(const label of ['차갑게 (아이스)','따뜻하게 (핫)'])grid.append(button(label,()=>{temperature=label;cart();},'menu-item'));content.append(grid);}
+function cart(){heading.textContent='주문을 확인해 주세요';content.replaceChildren();const box=document.createElement('div');box.className='order-box';box.textContent=`${selected} · ${temperature} · 1잔`;content.append(box,button('결제 화면으로',()=>{heading.textContent='결제 전 확인';content.replaceChildren();const p=document.createElement('p');p.className='order-box';p.textContent='연습이 끝났습니다. 실제 결제는 진행하지 않습니다.';content.append(p);}));}
+document.getElementById('back').onclick=home;document.getElementById('shuffle').onclick=()=>{menus=[...menus.slice(1),menus[0]];home();};home();

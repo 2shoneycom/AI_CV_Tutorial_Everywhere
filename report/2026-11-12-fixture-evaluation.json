@@ -1,0 +1,36 @@
+{
+  "model": "gpt-5.4",
+  "note": "Two synthetic fixture checks; not a general accuracy benchmark.",
+  "results": [
+    {
+      "name": "missing-goal",
+      "pass": true,
+      "latencyMs": 5310,
+      "guide": {
+        "status": "question",
+        "observation": "화면에 음료 4가지가 보입니다: 아메리카노, 카페 라테, 바닐라 라테, 초콜릿.",
+        "message": "어떤 음료를 원하세요? 음료 이름을 말씀해 주세요.",
+        "completionCheck": "다음 사진에서 말씀하신 음료 버튼이 선택되었거나, 그 버튼을 누르기 직전 화면이 보이면 됩니다.",
+        "target": null
+      }
+    },
+    {
+      "name": "americano-grounding",
+      "pass": true,
+      "latencyMs": 5408,
+      "guide": {
+        "status": "guide",
+        "observation": "화면에 음료 선택 버튼이 보입니다. 왼쪽 위에 ‘아메리카노’가 보입니다. ‘아이스’ 선택은 아직 보이지 않습니다.",
+        "message": "왼쪽 위의 ‘아메리카노’ 버튼을 한 번 눌러주세요.",
+        "completionCheck": "다음 사진에서 아메리카노가 선택된 다음 화면이 보이거나, 온도/옵션 선택 화면이 보이면 됩니다.",
+        "target": {
+          "label": "아메리카노",
+          "x": 217,
+          "y": 324,
+          "width": 276,
+          "height": 161
+        }
+      }
+    }
+  ]
+}
